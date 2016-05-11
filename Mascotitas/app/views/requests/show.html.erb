@@ -1,0 +1,24 @@
+<!--<p id="notice"><%= notice %></p>-->
+
+<p>
+  <strong>Publisher:</strong>
+  <%= @request.publisher %>
+</p>
+
+<p>
+  <strong>Interented:</strong>
+  <%= @request.interented %>
+</p>
+
+<p>
+  <strong>Pet:</strong>
+  <%= @request.pet %>
+</p>
+
+<p>
+  <strong>Confirmed:</strong>
+  <%= @request.confirmed %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  publisher_id: 
+  interented_id: 
+  pet_id: 
+  confirmed: false
+
+two:
+  publisher_id: 
+  interented_id: 
+  pet_id: 
+  confirmed: false

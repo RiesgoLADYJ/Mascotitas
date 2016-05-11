@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
+  devise_for :views
+  resources :requests
+  resources :pets
+  resources :vaccines
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
