@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.float :lat
       t.float :lng
+      t.references :pet, index: true, foreign_key: true
 
       t.timestamps null: false
     end

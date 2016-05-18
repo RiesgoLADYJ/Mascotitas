@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+
   end
 
   # GET /users/1
@@ -15,6 +18,8 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+        puts "TESt EN NEW"
+
   end
 
   # GET /users/1/edit
@@ -25,6 +30,8 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    puts "TESTTTT"
+    puts @user.to_json
 
     respond_to do |format|
       if @user.save
@@ -69,6 +76,8 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :last_name, :lat, :lng)
+      params.require(:user).permit(:name, :last_name,:password , :password_confirmation, :email)
     end
+
+
 end
