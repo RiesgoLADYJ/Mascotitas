@@ -3,6 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
+  	puts "TEST EN DEVICE CONTROLLER"
     params.require(:user).permit(:name,:last_name,   :email, :password, :password_confirmation)
   end
 
