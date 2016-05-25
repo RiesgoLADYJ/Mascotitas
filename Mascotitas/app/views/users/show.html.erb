@@ -21,8 +21,40 @@
 
 <p>
   <strong>Pet:</strong>
-  <%= @user.pet %>
+  <%= @user.pet_id %>
 </p>
+
+<tbody>
+    <% @user.pets.each do |pet| %>
+      <tr>
+        <td><%= pet.name %></td>
+        <td><%= pet.specie %></td>
+        <td><%= pet.age %></td>
+        <td><%= pet.gender %></td>
+        <td><%= pet.race %></td>
+        <td><%= pet.size %></td>
+        <td><%= pet.sterilized %></td>
+        <td><%= pet.avatar %></td>
+        <td><%= pet.user %></td>
+        <td><%= pet.adoption %></td>
+        <td><%= pet.vaccine %></td>
+        <td><%= link_to 'Show', pet %></td>
+        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
+        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+</table>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<br/>
+
+<%= link_to 'Mis Mascotas', pets_path %>
+<%= link_to 'Adoptar', pets_path %>
+
+
