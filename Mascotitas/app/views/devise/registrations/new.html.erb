@@ -72,51 +72,6 @@
               <%= f.label :password_confirmation , class: "control-label"%><br />
               <%= f.password_field :password_confirmation, class: "form-control" , id: "exampleInputPassword1", placeholder: "Confirmacion" , autocomplete: "off" %>  
               </div>
-              <div class="actions">
-                
-               <%= f.submit "Registrarse" , class: "btn btn-warning"%>
-              
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section"></div>
-    <div class="section"></div>
-    <div class="section section-warning">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="text-center">Siguenos en:</h1>
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-xs-3 text-center">
-            <a><i class="fa fa-5x fa-fw fa-instagram text-inverse"></i></a>
-          </div>
-          <div class="col-xs-3">
-            <a href="https://twitter.com/Pingendo">
-              <i class="fa fa-5x fa-fw fa-twitter text-inverse"></i></a>
-          </div>
-          <div class="col-xs-3">
-            <a><i class="fa fa-5x fa-facebook-f fa-fw text-inverse"></i></a>
-          </div>
-          <div class="col-xs-3 text-center">
-            <a><i class="fa fa-5x fa-fw fa-github text-inverse"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-
-</body>
-
-<<<<<<< HEAD
-
-
-
-
 
 <!--<script type="text/javascript">
 handler = Gmaps.build('Google');
@@ -171,8 +126,8 @@ var myMarker = new google.maps.Marker({
 
 google.maps.event.addListener(myMarker, 'dragend', function (evt) {
 
-  document.getElementById('lat').value = evt.latLng.lat().toFixed(3);
-    document.getElementById('lng').value = evt.latLng.lng().toFixed(3);
+  document.getElementById('lat').innerHTML = evt.latLng.lat().toFixed(3);
+    document.getElementById('lng').innerHTML = evt.latLng.lng().toFixed(3);
 
     document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
 });
@@ -184,14 +139,47 @@ google.maps.event.addListener(myMarker, 'dragstart', function (evt) {
 map.setCenter(myMarker.position);
 myMarker.setMap(map);
 </script>
+              <div class="actions">
+                
+               <%= f.submit "Registrarse" , class: "btn btn-warning"%>
+              
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section section-warning">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Siguenos en:</h1>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-xs-3 text-center">
+            <a><i class="fa fa-5x fa-fw fa-instagram text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3">
+            <a href="https://twitter.com/Pingendo">
+              <i class="fa fa-5x fa-fw fa-twitter text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3">
+            <a><i class="fa fa-5x fa-facebook-f fa-fw text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3 text-center">
+            <a><i class="fa fa-5x fa-fw fa-github text-inverse"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body>
 
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<!-- only if you need custom infoboxes -->
-=======
->>>>>>> ramayoshua
 <% end %>
 
 
