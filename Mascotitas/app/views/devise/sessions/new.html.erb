@@ -1,26 +1,106 @@
-<h2>Log in</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+  </head><body>
+    <div class="navbar navbar-default navbar-inverse navbar-static-top" id="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Mascotitas</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="lead nav navbar-nav navbar-right">
+            <li>
+              <a href="index.html">Home<br></a>
+            </li>
+            <li>
+              <a href="buscar_mascota.html"><i class="fa fa-fw fa-search"></i>Buscar Mascota</a>
+            </li>
+            <li>
+              <a href="registro.html">Registro<br><br></a>
+            </li>
+            <li class="active">
+              <a href="Login.html">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-  <% end -%>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-horizontal" role="form">
+              <div class="form-group field">
+                  <%= f.label :email , class: "control-label col-sm-2"%><br />
+                  <%= f.email_field :email, type: 'email' , class: "form-control" , id: "inputEmail13" , placeholder: "Correo electronico" , autofocus: true %>
+              </div>
+              <div class="form-group field">
+                <%= f.label :password , class: "control-label col-sm-2"%><br />
+                <%= f.password_field :password, class: "col-sm-10 form-control" , id: "inputPassword3", placeholder: "Contraseña" , autocomplete: "off" %>
+                </div>
+              </div>
+               <% if devise_mapping.rememberable? -%>
+              <div class="form-group">
+              <div class=" col-sm-10">
+                   <%= f.check_box :remember_me , class: "checkbox field col-sm-offset-2"%>
+                    <%= f.label :remember_me %>
+                    </div>
+               </div>
+                </div>
+              </div>
+                <div class="actions">
+                  <%= f.submit "Iniciar Sesión" , class: "btn btn-warning col-sm-offset-2" %>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section section-warning">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Siguenos en:</h1>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-xs-3 text-center">
+            <a><i class="fa fa-5x fa-fw fa-instagram text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3">
+            <a href="https://twitter.com/Pingendo">
+              <i class="fa fa-5x fa-fw fa-twitter text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3">
+            <a><i class="fa fa-5x fa-facebook-f fa-fw text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3 text-center">
+            <a><i class="fa fa-5x fa-fw fa-github text-inverse"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+ 
+</body>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+<% end %>
 <% end %>
 
 <%= render "devise/shared/links" %>
