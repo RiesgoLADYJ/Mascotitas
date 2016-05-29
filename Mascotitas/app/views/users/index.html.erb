@@ -15,7 +15,7 @@
             <p class="text-inverse">Encuentrale un hogar a tu mascota.</p>
             <% if user_signed_in? %>
             <%= link_to 'Mis Mascotas', pets_path , class: "btn btn-warning"%>
-            <%= link_to 'Adoptar', pets_path , class: "btn btn-warning" %>
+            <%= link_to 'Adoptar', adopcion_path , class: "btn btn-warning" %>
             <% else %>
             <% end %>  
             <br>

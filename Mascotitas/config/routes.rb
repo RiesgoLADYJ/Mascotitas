@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+get 'pets/adopcion', to: 'pets#adopcion', as: 'adopcion' 
+
+
 devise_for :users, :controllers => { registrations: 'registrations' }
   resources :requests
   resources :pets
