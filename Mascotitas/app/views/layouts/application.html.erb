@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+
 <head>
   <title>Mascotitas</title>
 
@@ -9,20 +8,44 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-
-
-
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
+<div class="navbar navbar-default navbar-inverse navbar-static-top" id="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Mascotitas</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="lead nav navbar-nav navbar-right">
+            <li class="active">
+              <%= link_to 'Inicio',  root_path %><br>
+            </li>
+            <li>
+              <a href=#><i class="fa fa-fw fa-search"></i>Buscar Mascota</a>
+            </li>
+            <% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 <% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+  <li>
+              <%= link_to "Registrarse", new_user_registration_path, :class => 'navbar-link'  %><br><br>
+            </li>
+            <li>
 
+           | <%= link_to "Iniciar Sesion", new_user_session_path, :class => 'navbar-link'  %>
+           <% end %> 
+            </li>
+
+          </ul>
+       
+        </div>
+      </div>
+    </div>
 
   <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
@@ -33,5 +56,5 @@
 
 <%= yield %>
 
+
 </body>
-</html>
