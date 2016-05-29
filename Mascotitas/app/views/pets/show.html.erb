@@ -41,7 +41,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @pet.user %>
+  <%= @pet.user.email %>
 </p>
 
 <p>
@@ -52,6 +52,12 @@
 <p>
   <strong>Vaccine:</strong>
   <%= @pet.vaccine %>
+</p>
+  <strong>Lat:</strong>
+  <%= @pet.user.lat %>
+</p>
+  <strong>Lng:</strong>
+  <%= @pet.user.lng %>
 </p>
 
 <%= link_to 'Edit', edit_pet_path(@pet) %> |

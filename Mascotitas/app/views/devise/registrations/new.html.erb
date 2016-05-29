@@ -103,14 +103,14 @@ function initMap() {
 <label>Latitud</label>
 <div id="current">Nothing yet...</div>
   
-    <div class="field" id="lat">
+    <div class="field" >
 
-    <%= f.number_field :lat,  :value => '19.434'%>
+    <%= f.number_field :lat,  :value => '19.434', :id =>'lat', :step => '.001' %>
   </div>
-  <label>Longitud</label>
-  <div class="field" id ="lng" >
+  <label>Longitud</label> 
+  <div class="field" >
 
-    <%= f.number_field :lng, :value => '-99.133' %>
+    <%= f.number_field :lng, :value => '-99.133' , :id =>'lng' , :step => '.001'%>
   </div>
 <script type="text/javascript">
 var map = new google.maps.Map(document.getElementById('map_canvas'), {
@@ -126,8 +126,8 @@ var myMarker = new google.maps.Marker({
 
 google.maps.event.addListener(myMarker, 'dragend', function (evt) {
 
-  document.getElementById('lat').innerHTML = evt.latLng.lat().toFixed(3);
-    document.getElementById('lng').innerHTML = evt.latLng.lng().toFixed(3);
+  document.getElementById('lat').value = evt.latLng.lat().toFixed(3);
+    document.getElementById('lng').value = evt.latLng.lng().toFixed(3);
 
     document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
 });
