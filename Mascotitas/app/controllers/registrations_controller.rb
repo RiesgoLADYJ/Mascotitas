@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up_params
   	puts "TEST EN DEVICE CONTROLLER"
-    params.require(:user).permit(:name,:last_name,   :email, :password, :password_confirmation)
+    params.require(:user).permit(:name,:last_name,   :email, :password, :password_confirmation,:lat,:lng)
   end
 
   #def account_update_params
