@@ -13,12 +13,18 @@
           <div class="col-md-12 text-center">
             <h1 class="text-inverse" contenteditable="true">Mascotitas</h1>
             <p class="text-inverse">Encuentrale un hogar a tu mascota.</p>
+            <% if user_signed_in? %>
+            <%= link_to 'Mis Mascotas', pets_path , class: "btn btn-warning"%>
+            <%= link_to 'Adoptar', pets_path , class: "btn btn-warning" %>
+            <% else %>
+            <% end %>  
             <br>
             <br>
           </div>
         </div>
       </div>
     </div>
+
     <div class="section section-warning">
       <div class="container">
         <div class="row">
@@ -46,8 +52,6 @@
         </div>
       </div>
     </div>
-  
-
 </body>
 
 <!-- <p id="notice"><%= notice %></p>
