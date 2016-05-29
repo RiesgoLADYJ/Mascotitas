@@ -4,13 +4,18 @@ class PetsController < ApplicationController
   # GET /pets
   # GET /pets.json
   def index
-    @pets = Pet.where(user_id:  current_user.id ).where(adoption: true).all
+    @pets = Pet.where(user_id:  current_user.id ).all
     
   end
 
   # GET /pets/1
   # GET /pets/1.json
   def show
+  end
+
+  def adopcion
+        @pets = Pet.where.not(user_id:  current_user.id ).where(adoption: false).all
+
   end
 
   # GET /pets/new
