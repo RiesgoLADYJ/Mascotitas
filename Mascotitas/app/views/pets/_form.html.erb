@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name , :required => true%>
   </div>
   <div class="field">
     <%= f.label :specie %><br>
@@ -47,7 +47,7 @@
     <%= f.check_box :adoption %>
   </div>
 
-    <%= f.file_field :avatar , accept:'image/*'%>
+    <%= f.file_field :avatar , accept:'image/*' , :required => true%>
 
   <div class="actions">
     <%= f.submit %>

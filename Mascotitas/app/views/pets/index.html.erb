@@ -31,7 +31,7 @@
         <td><%= pet.race %></td>
         <td><%= pet.size %></td>
         <td><%= pet.sterilized %></td>
-        <td><%= pet.avatar %></td>
+  <td><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></td>
         <td><%= pet.user_id %></td>
         <td><%= pet.adoption %></td>
         <td><%= pet.vaccine %></td>

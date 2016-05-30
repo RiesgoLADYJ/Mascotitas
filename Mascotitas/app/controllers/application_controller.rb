@@ -11,7 +11,8 @@ def configure_permitted_parameters
                                       keys: [:name,
                                              :last_name,
                                              :lat,
-                                             :lng])
+                                             :lng,
+                                             :phone_number])
 
 end
 
