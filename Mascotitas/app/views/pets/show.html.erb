@@ -36,7 +36,7 @@
 
 <p>
   <strong>Avatar:</strong>
-  <%= @pet.avatar %>
+  <%= image_tag(@pet.avatar, :width => 200) if @pet.avatar.present? %>
 </p>
 
 <p>
