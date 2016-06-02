@@ -3,13 +3,9 @@ class PetsController < ApplicationController
   # GET /pets
   # GET /pets.json
   def index
-    @pets = Pet.where(user_id:  current_user.id ).all
-    i = 0
-    @pets_m = Array.new(@pets.size) 
-    @pets.each do |p|
-      @pets_m[i] = [p.name,p.user.lat,p.user.lng,p.id]
-      i = i+1 
-    end
+    @pets = Pet.where(user_id:  current_user.id ).where.not(adoption: true).all
+    @pets_a = Pet.where(user_id:  current_user.id ).where(adoption: true).all
+
   end
 
   # GET /pets/1
@@ -17,9 +13,31 @@ class PetsController < ApplicationController
   def show
   end
 
+  def adopta
+    respond_to do |format|
+      request = Request.new
+      @pet = Pet.find(params[:id])
+
+      request.interented_id = current_user.id
+      request.pet_id = params[:id]
+      request.publisher_id = @pet.user_id
+            request.save
+puts "DESCONTROLADOS?"
+puts @pet.to_json
+      puts request.to_json
+      format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+
   def adopcion
         @pets = Pet.where.not(user_id:  current_user.id ).where(adoption: true).all
-
+    @pets_m = Array.new(@pets.size) 
+    @pets.each do |p|
+      @pets_m[i] = [p.name,p.user.lat,p.user.lng,p.id]
+      i = i+1 
+    end
   end
 
   # GET /pets/new

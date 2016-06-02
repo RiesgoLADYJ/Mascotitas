@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.float :lng
       t.string :phone_number
       t.references :pet, index: true, foreign_key: true
+      
 
       t.timestamps null: false
     end

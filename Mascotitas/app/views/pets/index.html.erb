@@ -11,7 +11,7 @@
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Pets</h1>
+<h1>Mis mascotas</h1>
 
 <table>
   <thead>
@@ -55,71 +55,52 @@
     <% end %>
   </tbody>
 </table>
-<%= javascript_tag do%>
- window.nearbys= <%=raw @pets.to_json %>;
 
-<%end%>
-<div id='map_canvas'></div>
-<script type="text/javascript">
+<h1>Mis mascotas en adopción</h1>
 
-function myFunction(identificador){
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Specie</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Race</th>
+      <th>Size</th>
+      <th>Sterilized</th>
+      <th>Avatar</th>
+      <th>User</th>
+      <th>Adoption</th>
+      <th>Vaccine</th>
+      <th>Duenño</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-}
+  <tbody>
+    <% @pets_a.each do |pet| %>
+      <tr>
+        <td><%= pet.name %></td>
+        <td><%= pet.specie %></td>
+        <td><%= pet.age %></td>
+        <td><%= pet.gender %></td>
+        <td><%= pet.race %></td>
+        <td><%= pet.size %></td>
+        <td><%= pet.sterilized %></td>
+  <td><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></td>
+        <td><%= pet.user_id %></td>
+        <td><%= pet.adoption %></td>
+        <td><%= pet.vaccine %></td>
+        <td><%= pet.user.email %></td>
 
+        <td><%= link_to 'Show', pet %></td>
+        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
+        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-
-var map = new google.maps.Map(document.getElementById('map_canvas'), {
-    zoom: 11,
-    center: new google.maps.LatLng(19.434,-99.133),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-});
-var markers=[];
-    var infoWindowContent=[];
-    $.each(nearbys, function(index) { 
-        var pets = <%=raw @pets_m.to_json%>;
-        console.log( [pets[index][0]+ " " +pets[index][1]+" "+pets[index][2]+" "+pets[index][3]]);
-
-        console.log( [nearbys[index]['name']+ " " +nearbys[index]['user_id']+" "+nearbys[index]['user.lng']]);
-        markers.push([pets[index][0],pets[index][1],pets[index][2]]);
-        infoWindowContent.push(['<div class="info_content" >' +'<button onclick="myFunction()"> Click me</button>'+
-        '<h3 style="color: rgb(<%= rand(0..200)%>,<%= rand(0..200)%> ,<%= rand(0..200)%>);">'+nearbys[index]['name']+'</h3>' +'</br>'+
-        '<p>'+nearbys[index]['name']+'</p>' +       
-         '</div>']);
-
-        });   
-
-       // Display multiple markers on a map
-       var infoWindow = new google.maps.InfoWindow(), marker, i;        
-      // Loop through our array of markers & place each one on the map  
-      for( i = 0; i < markers.length; i++ ) {
-          var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
-          marker = new google.maps.Marker({
-            position: position,
-            map: map,
-            title: markers[i][0]
-        });
-
-        // Allow each marker to have an info window    
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                infoWindow.setContent(infoWindowContent[i][0]);
-                infoWindow.open(map, marker);
-
-
-            }
-        })(marker, i));
-
-
-    
-    }
-
-    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(14);
-        google.maps.event.removeListener(boundsListener);
-    });
-
-</script>
 <br>
 
 <%= link_to 'New Pet', new_pet_path %>
