@@ -4,7 +4,12 @@ class PetsController < ApplicationController
   # GET /pets.json
   def index
     @pets = Pet.where(user_id:  current_user.id ).all
-    
+    i = 0
+    @pets_m = Array.new(@pets.size) 
+    @pets.each do |p|
+      @pets_m[i] = [p.name,p.user.lat,p.user.lng,p.id]
+      i = i+1 
+    end
   end
 
   # GET /pets/1
