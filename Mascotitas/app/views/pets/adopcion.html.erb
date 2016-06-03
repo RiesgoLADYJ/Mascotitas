@@ -10,8 +10,176 @@
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
-<p id="notice"><%= notice %></p>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html><head></head><body>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="Untitled.css" rel="stylesheet" type="text/css">
+    
+    
+    
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Busqueda por Nombre:</h3>
+            <div class="col-sm-12">
+              <input type="text" class="form-control" placeholder="Nombre">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h3>Busqueda por especie:</h3>
+            <div class="col-sm-12">
+              <select class="form-control">
+                <option>Perro</option>
+                <option>Gato</option>
+                <option>Reptil</option>
+                <option>Pez</option>
+                <option>Roedor</option>
+                <option>Ave</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Busqueda por raza:</h3>
+            <div class="col-sm-12">
+              <input type="text" class="form-control" placeholder="Raza">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h3>Sexo:</h3>
+            <div class="col-sm-12">
+              <select class="form-control">
+                <option>Macho</option>
+                <option>Hembra</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Talla:</h3>
+            <div class="col-sm-12">
+              <select class="form-control">
+                <option>Muy pequeño</option>
+                <option>Pequeño</option>
+                <option>Mediano</option>
+                <option>Grande</option>
+                <option>Muy Grande</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <br>
+            <label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox1" value="option1">ESTERILIZACIÓN</label>
+            <label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox2" value="option2">ADOPTADO</label>
+          </div>
+        </div>
+      </div>
+    
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-horizontal text-center" role="form">
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-block btn-lg btn-success">Buscar mascota</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="section section-warning">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Siguenos en:</h1>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-xs-3 text-center">
+            <a href="https://instagram.com">
+              <i class="fa fa-5x fa-fw fa-instagram text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3">
+            <a href="https://twitter.com/Pingendo">
+              <i class="fa fa-5x fa-fw fa-twitter text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3">
+            <a href="https://facebook.com">
+              <i class="fa fa-5x fa-facebook-f fa-fw text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3 text-center">
+            <a href="https://github.com">
+              <i class="fa fa-5x fa-fw fa-github text-inverse"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p id="notice"><%= notice %></p>
 <h1>Listing Pets</h1>
 
 <table>
@@ -129,4 +297,3 @@ var markers=[];
 </script>
 <br>
 
-<%= link_to 'New Pet', new_pet_path %>

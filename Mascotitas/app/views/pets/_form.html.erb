@@ -34,14 +34,15 @@
 
 
 <!--Atributo especie-->
-<div class="section">
+<div class="form-group">
   <div class="field">
   <h3 class="text-center"><%= f.label :specie %><br></h3>
 </div>
   
   <div class="container">
-  <%= f.select :specie, ['Perro', 'Gato','Reptil','Pez','Roedor','Ave'] %>
+  <%= f.select(:specie, options_for_select(['Perro', 'Gato','Reptil','Pez','Roedor','Ave']),{}, {class: "form-control"}) %>
   </div>
+</div>
 
 <!--Atributo Edad-->
 <div class="section">
@@ -61,9 +62,9 @@
     <h3 class="text-center"><%= f.label :gender %><br></h3>
   </div>
   
-    
-    <%= f.select(:gender, options_for_select([['Macho', 'Hembra']]),{}, {class: "form-control"})%>
-  
+  <div class="container">  
+    <%= f.select(:gender, options_for_select(['Macho', 'Hembra']),{}, {class: "form-control"})%>
+  </div>
 </div>
 
 
@@ -80,22 +81,42 @@
   </div>
 </div>
 
+<!--Atributo Talla-->
+<div class="form-group">
   <div class="field">
-    <%= f.label :size %><br>
-    <%= f.select :size, ['Muy Pequeño', 'Pequeño','Mediano','Grande','Muy Grande']%>
-
+    <h3 class="text-center"><%= f.label :size %><br></h3>
   </div>
 
-  <div class="field">
-    <%= f.label :sterilized %>
-    <%= f.check_box :sterilized %>
+  <div class="container">
+        <%= f.select(:size, options_for_select(['Muy Pequeño','Pequeño','Mediano','Grande','Muy Grande']),{},{class: "form-control"}) %>
+
   </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <br>
+        <!--Atributo Esterilizado-->
+        <div class="field">
+          <%= f.label :sterilized %>
+          <%= f.check_box :sterilized %>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+      <br>
+        <!--Atributo Adoptado-->
+        <div class="field">
+          <%= f.label :adoption %>
+          <%= f.check_box :adoption %>
+        </div>
+
+    </div>
+  </div>
+</div>
 
 
-  <div class="field">
-    <%= f.label :adoption %>
-    <%= f.check_box :adoption %>
-  </div>
 
     <%= f.file_field :avatar , accept:'image/*' , :required => true%>
 
