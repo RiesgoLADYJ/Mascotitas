@@ -17,25 +17,13 @@
 
  <div class="section">
       <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <img src="https://unsplash.imgix.net/uploads/1411724908903377d4696/2e9b0cb2?w=1024&amp;q=50&amp;fm=jpg&amp;s=2016c4932a7b7a1b629cb6890bff9977" class="img-responsive">
-          </div>
-          <div class="col-md-6">
+       
+ 
+          
             <h1>Tu perfil
-              <br>
             </h1>
-            <h3>Información sobre ti</h3>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-              ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-              dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-              nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-              Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-              enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
-              felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
-              elementum semper nisi.</p>
-          </div>
-        </div>
+       
+        
       </div>
     </div>
     <div class="section">
@@ -43,10 +31,10 @@
         <div class="row">
           <div class="col-md-12">
             <ul class="list-group">
-              <li class="list-group-item">Nombre</li>
-              <li class="list-group-item">Apellido</li>
-              <li class="list-group-item" contenteditable="true">Correo</li>
-              <li class="list-group-item">Telefono</li>
+              <li class="list-group-item"><%=h current_user.name%></li>
+              <li class="list-group-item"><%=h current_user.last_name %></li>
+              <li class="list-group-item"><%=h current_user.email %></li>
+              <li class="list-group-item"><%=h current_user.phone_number %></li>
             </ul>
           </div>
         </div>
