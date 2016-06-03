@@ -49,11 +49,19 @@ class PetsController < ApplicationController
       respond_to do |format|
         @request = Request.where(pet_id: params[:id]).first
         puts 'SE ESTA HACIENDO LA ADOPCION'
-        puts @request.pet
-        pet = Pet.where(id: @request.pet_id)
-        owner = User.where(id: @request.publisher_id)
+        
+        pet = Pet.where(id: @request.pet_id).first
+        owner = User.where(id: @request.publisher_id).first
         current_user.pets << pet
+        current_user.save
+        pet.adoption = false
+        pets.user = current_user
+        pet.save
+        puts owner.id
+        owner.pets.delete(pet)
+        owner.save
         @request.destroy
+
         puts 'YA SE HIZO LA ADOPCION'
 
         format.html { redirect_to pets_url, notice: 'Diste una mascota en adopcion' }
