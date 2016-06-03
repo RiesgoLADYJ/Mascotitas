@@ -75,11 +75,19 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-            <img src="https://ununsplash.imgix.net/photo-1421098518790-5a14be02b243?w=1024&amp;q=50&amp;fm=jpg&amp;s=24665881d66f79925810c2deb7e486b9" class="img-responsive img-rounded">
-            <h2 class="text-center">Floppy</h2>
-            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisici elit,
-              <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-              <br>Ut enim ad minim veniam, quis nostrud</p>
+            <p><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></p>
+
+            <h2 class="text-center"><%= pet.name %></h2>
+            <p class="text-center">
+              <br><%= pet.specie %>
+              <br><%= pet.age %>
+              <br><%= pet.gender %>
+              <br><%= pet.race %>
+              <br><%= pet.size %>
+              <br><%= pet.sterilized %>
+              <br>U
+              
+            </p>
           </div>
          
         </div>
@@ -244,3 +252,28 @@
   
 
 </body></html>
+
+
+
+<!--SECCION DE MIS MASCOTAS EN ESTADO DE ADOPCION
+
+ <div class="section">
+  <!AQUI VA UN pets each doo...
+             <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <img src="https://ununsplash.imgix.net/photo-1421098518790-5a14be02b243?w=1024&amp;q=50&amp;fm=jpg&amp;s=24665881d66f79925810c2deb7e486b9" class="img-responsive img-rounded">
+            <h2 class="text-center">Floppy</h2>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisici elit,
+              <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+              <br>Ut enim ad minim veniam, quis nostrud</p>
+          </div>
+         
+        </div>
+      </div>
+      <!- AQUI VA UN end
+    </div>
+
+
+-->
+

@@ -232,7 +232,7 @@
 <div id='map_canvas'></div>
 <script type="text/javascript">
 
-Function myFunction(identificador){
+function myFunction(identificador){
   window.location.href='http://localhost:3000/pets/'+identificador+"'";
 
 }
@@ -256,7 +256,8 @@ var markers=[];
 
         console.log( [nearbys[index]['name']+ " " +nearbys[index]['user_id']+" "+nearbys[index]['user.lng']]);
         markers.push([pets[index][0],pets[index][1],pets[index][2]]);
-        infoWindowContent.push(['<div class="info_content" >' +'<button onclick="myFunction(pets['+index+'][3])">Perfil</button>'+
+       
+        infoWindowContent.push(['<div class="info_content" >' +'<button onclick="myFunction()">Perfil</button>'+
         '<h3 style="color: rgb(<%= rand(0..200)%>,<%= rand(0..200)%> ,<%= rand(0..200)%>);">'+nearbys[index]['name']+'</h3>' +'</br>'+
         '<p>'+nearbys[index]['name']+'</p>' +       
          '</div>']);
