@@ -64,11 +64,10 @@
 <div id='map_canvas'></div>
 <script type="text/javascript">
 
-function myFunction(identificador){
+Function myFunction(identificador){
+  window.location.href='http://localhost:3000/pets/'+identificador+"'";
 
 }
-
-
 
 var map = new google.maps.Map(document.getElementById('map_canvas'), {
     zoom: 11,
@@ -82,18 +81,19 @@ function verMascota(llave){
 
 var markers=[];
     var infoWindowContent=[];
+    var pets = <%=raw @pets_m.to_json%>;
     $.each(nearbys, function(index) { 
-        var pets = <%=raw @pets_m.to_json%>;
+        
         console.log( [pets[index][0]+ " " +pets[index][1]+" "+pets[index][2]+" "+pets[index][3]]);
 
         console.log( [nearbys[index]['name']+ " " +nearbys[index]['user_id']+" "+nearbys[index]['user.lng']]);
         markers.push([pets[index][0],pets[index][1],pets[index][2]]);
-        infoWindowContent.push(['<div class="info_content" >' +'<button onclick="verMascota()"> Click me</button>'+
+        infoWindowContent.push(['<div class="info_content" >' +'<button onclick="myFunction(pets['+index+'][3])">Perfil</button>'+
         '<h3 style="color: rgb(<%= rand(0..200)%>,<%= rand(0..200)%> ,<%= rand(0..200)%>);">'+nearbys[index]['name']+'</h3>' +'</br>'+
         '<p>'+nearbys[index]['name']+'</p>' +       
          '</div>']);
 
-        });   
+        });    
 
        // Display multiple markers on a map
        var infoWindow = new google.maps.InfoWindow(), marker, i;        
