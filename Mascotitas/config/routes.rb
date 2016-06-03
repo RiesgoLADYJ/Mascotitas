@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 get 'pets/adopcion', to: 'pets#adopcion', as: 'adopcion' 
+post '/adopta/:id', to: "pets#adopta", as: 'adopta'
 
 
 devise_for :users, :controllers => { registrations: 'registrations' }

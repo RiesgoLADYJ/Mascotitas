@@ -6,7 +6,7 @@ class CreateRequests < ActiveRecord::Migration
       t.references :pet, index: true, foreign_key: true
       t.boolean :confirmed
 
-      t.timestamps null: false
+      t.timestamps null: false 
     end
   end
 end

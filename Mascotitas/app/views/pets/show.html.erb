@@ -63,5 +63,10 @@
   <%= @pet.user.phone_number %>
 </p>
 
+<%= form_tag adopta_path, method: :post do %>
+  <%= submit_tag 'Adoptar' %>
+<% end %>
+
+
 <%= link_to 'Edit', edit_pet_path(@pet) %> |
 <%= link_to 'Back', pets_path %>
