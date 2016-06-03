@@ -1,3 +1,15 @@
+
+<html><head></head><body>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="Untitled.css" rel="stylesheet" type="text/css">
+    
+    
+
+
 <%= form_for(@pet) do |f| %>
   <% if @pet.errors.any? %>
     <div id="error_explanation">
@@ -10,32 +22,70 @@
       </ul>
     </div>
   <% end %>
+<!--Atributo Nombre-->
+  <div class="section">
+    <div class="field">
+    <h3 class="text-center"> <%= f.label :name %></h3><br>
+    </div>
+      <div class="container">
+        <%= f.text_field :name , :required => true, class:'form-control', placeholder:'Agrega un nombre'%>
+      </div>
+    </div>
 
+
+<!--Atributo especie-->
+<div class="section">
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name , :required => true%>
+  <h3 class="text-center"><%= f.label :specie %><br></h3>
+</div>
+  
+  <div class="container">
+  <%= f.select :specie, ['Perro', 'Gato','Reptil','Pez','Roedor','Ave'] %>
   </div>
+
+<!--Atributo Edad-->
+<div class="section">
   <div class="field">
-    <%= f.label :specie %><br>
-<%= f.select :specie, ['Perro', 'Gato','Reptil','Pez','Roedor','Ave']%>
+    <h3 class="text-center"><%= f.label :age %><br></h3>
   </div>
+  <div class="container">
+    
+    <%= f.number_field :age ,class: 'form-control', placeholder: "Ingresa una Edad"%>
+  </div>
+</div>
+
+
+<!--Atributo GENERO-->
+<div class="form-group">
   <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
+    <h3 class="text-center"><%= f.label :gender %><br></h3>
   </div>
+  
+    
+    <%= f.select(:gender, options_for_select([['Macho', 'Hembra']]),{}, {class: "form-control"})%>
+  
+</div>
+
+
+
+
+<!--Atributo Raza-->
+<div class="section">
   <div class="field">
-    <%= f.label :gender %><br>
-<%= f.select :gender, ['Macho', 'Hembra']%>
+    <h3 class="text-center"><%= f.label :race %><br></h3>
   </div>
-  <div class="field">
-    <%= f.label :race %><br>
-    <%= f.text_field :race %>
+  <div class="container">
+    
+    <%= f.text_field :race, class: 'form-control', placeholder: "Ingresa una Raza" %>
   </div>
+</div>
+
   <div class="field">
     <%= f.label :size %><br>
     <%= f.select :size, ['Muy Pequeño', 'Pequeño','Mediano','Grande','Muy Grande']%>
 
   </div>
+
   <div class="field">
     <%= f.label :sterilized %>
     <%= f.check_box :sterilized %>
@@ -53,3 +103,34 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+ <div class="section section-warning">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Siguenos en:</h1>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-xs-3 text-center">
+            <a href="https://instagram.com">
+              <i class="fa fa-5x fa-fw fa-instagram text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3">
+            <a href="https://twitter.com/Pingendo">
+              <i class="fa fa-5x fa-fw fa-twitter text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3">
+            <a href="https://facebook.com">
+              <i class="fa fa-5x fa-facebook-f fa-fw text-inverse"></i></a>
+          </div>
+          <div class="col-xs-3 text-center">
+            <a href="https://github.com">
+              <i class="fa fa-5x fa-fw fa-github text-inverse"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body></html>
