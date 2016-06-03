@@ -60,20 +60,25 @@
     </div>
 
 <div class="section">
-  <!--AQUI VA UN pets each doo...-->
+  
              <div class="container">
         <div class="row">
+           <% @pets_a.each do |pet| %>
           <div class="col-md-3">
-            <img src="https://ununsplash.imgix.net/photo-1421098518790-5a14be02b243?w=1024&amp;q=50&amp;fm=jpg&amp;s=24665881d66f79925810c2deb7e486b9" class="img-responsive img-rounded">
-            <h2 class="text-center">Floppy</h2>
-            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisici elit,
-              <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-              <br>Ut enim ad minim veniam, quis nostrud</p>
+            <p class="text-center"><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></p>
+            <h2 class="text-center"><%= pet.name %></h2>
+            <p class="text-center">
+              <br><%= pet.specie %>
+              <br><%= pet.gender %>
+              <br><%= pet.race %>
+              <br><%= pet.size %>
+              <br><%= link_to 'Administrar', pet %>
+            </p>
           </div>
-         
+          <% end %>
         </div>
       </div>
-       <!-- AQUI VA UN end-->
+       
     </div>
 
 
@@ -99,7 +104,7 @@
         <div class="row">
           <% @pets.each do |pet| %>
           <div class="col-md-3">
-            <p><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></p>
+            <p class="text-center"><%= image_tag(pet.avatar, :width => 200, class: 'img-responsive img-rounded') if pet.avatar.present? %></p>
 
             <h2 class="text-center"><%= pet.name %></h2>
             <p class="text-center">
@@ -115,6 +120,7 @@
           </div>
          <% end %>
         </div>
+
       </div>
       
     </div>
