@@ -63,9 +63,38 @@
   <%= @pet.user.phone_number %>
 </p>
 
+<% if @pet.adoption and @pet.user_id != current_user.id %>
 <%= form_tag adopta_path, method: :post do %>
   <%= submit_tag 'Adoptar' %>
 <% end %>
+ <% else %>
+
+<h1 Quieren Adoptar/>
+ <table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Correo</th>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @interested.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td>
+        <%= form_tag acepta_path, method: :post do %>
+          <%= submit_tag 'Aprovar adopcion', data: { confirm: 'Daras en adopcion a esta mascota, debes haber contactdo al interesado antes y haberlo confimrado' } %>
+        <% end %>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+ <% end %> 
 
 
 <%= link_to 'Edit', edit_pet_path(@pet) %> |

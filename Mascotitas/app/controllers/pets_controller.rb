@@ -11,19 +11,25 @@ class PetsController < ApplicationController
   # GET /pets/1
   # GET /pets/1.json
   def show
+
+    @requests = Request.where(pet_id: params[:id]).all
+    users_id = Array.new(@requests.size) 
+    @requests.each do |req|
+      users_id.push([req.interented_id])
+    end
+    @interested = User.find(users_id)
   end
 
   def adopta
     respond_to do |format|
       request = Request.new
       @pet = Pet.find(params[:id])
-
       request.interented_id = current_user.id
       request.pet_id = params[:id]
       request.publisher_id = @pet.user_id
-            request.save
-puts "DESCONTROLADOS?"
-puts @pet.to_json
+      request.save
+      puts "se salvo el request"
+      puts @pet.to_json
       puts request.to_json
       format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }
       format.json { head :no_content }
@@ -32,12 +38,27 @@ puts @pet.to_json
 
 
   def adopcion
-        @pets = Pet.where.not(user_id:  current_user.id ).where(adoption: true).all
+    @pets = Pet.where.not(user_id:  current_user.id ).where(adoption: true).all
     @pets_m = Array.new(@pets.size) 
     @pets.each do |p|
-      @pets_m[i] = [p.name,p.user.lat,p.user.lng,p.id]
-      i = i+1 
+      @pets_m.push([p.name,p.user.lat,p.user.lng,p.id])
     end
+  end
+
+  def acepta
+      respond_to do |format|
+        @request = Request.where(pet_id: params[:id]).first
+        puts 'SE ESTA HACIENDO LA ADOPCION'
+        puts @request.pet
+        pet = Pet.where(id: @request.pet_id)
+        owner = User.where(id: @request.publisher_id)
+        current_user.pets << pet
+        @request.destroy
+        puts 'YA SE HIZO LA ADOPCION'
+
+        format.html { redirect_to pets_url, notice: 'Diste una mascota en adopcion' }
+        format.json { head :no_content }
+      end
   end
 
   # GET /pets/new
@@ -100,4 +121,6 @@ puts @pet.to_json
     def pet_params
       params.require(:pet).permit(:name, :specie, :age, :gender, :race, :size, :sterilized, :avatar, :user_id, :adoption, :vaccine_id)
     end
+
+
 end

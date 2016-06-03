@@ -64,10 +64,9 @@
 <div id='map_canvas'></div>
 <script type="text/javascript">
 
-Function myFunction(identificador){
-  window.location.href='http://localhost:3000/pets/'+identificador+"'";
-
-}
+// Function myFunction(identificador){
+//   window.location.href='http://localhost:3000/pets/'+identificador+"'";
+// }
 
 var map = new google.maps.Map(document.getElementById('map_canvas'), {
     zoom: 11,
@@ -75,9 +74,6 @@ var map = new google.maps.Map(document.getElementById('map_canvas'), {
     mapTypeId: google.maps.MapTypeId.ROADMAP
 });
 
-function verMascota(llave){
-  
-}
 
 var markers=[];
     var infoWindowContent=[];

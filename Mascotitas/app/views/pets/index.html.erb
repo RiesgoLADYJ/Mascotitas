@@ -87,15 +87,15 @@
         <td><%= pet.race %></td>
         <td><%= pet.size %></td>
         <td><%= pet.sterilized %></td>
-  <td><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></td>
+        <td><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></td>
         <td><%= pet.user_id %></td>
         <td><%= pet.adoption %></td>
         <td><%= pet.vaccine %></td>
         <td><%= pet.user.email %></td>
 
-        <td><%= link_to 'Show', pet %></td>
-        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', pet %></td>
+        <td><%= link_to 'Editar', edit_pet_path(pet) %></td>
+        <td><%= link_to 'Dar de baja', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
