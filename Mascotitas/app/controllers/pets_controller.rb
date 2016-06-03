@@ -51,15 +51,15 @@ class PetsController < ApplicationController
         puts 'SE ESTA HACIENDO LA ADOPCION'
         
         pet = Pet.where(id: @request.pet_id).first
-        owner = User.where(id: @request.publisher_id).first
-        current_user.pets << pet
+        interested = User.where(id: @request.interented_id).first
+        current_user.pets.delete(pet)
         current_user.save
+        interested.pets << pet
+        interested.save
         pet.adoption = false
-        pets.user = current_user
+        pet.user = interested
         pet.save
-        puts owner.id
-        owner.pets.delete(pet)
-        owner.save
+ 
         @request.destroy
 
         puts 'YA SE HIZO LA ADOPCION'
