@@ -55,6 +55,26 @@
 
 
 
+
+
+<div class="section">
+  <!--AQUI VA UN pets each doo...-->
+             <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <img src="https://ununsplash.imgix.net/photo-1421098518790-5a14be02b243?w=1024&amp;q=50&amp;fm=jpg&amp;s=24665881d66f79925810c2deb7e486b9" class="img-responsive img-rounded">
+            <h2 class="text-center">Floppy</h2>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisici elit,
+              <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+              <br>Ut enim ad minim veniam, quis nostrud</p>
+          </div>
+         
+        </div>
+      </div>
+       <!-- AQUI VA UN end-->
+    </div>
+
+
      <!--Insert Tus mascotas en estado de adopción-->
     <div class="section">
       <div class="container">
@@ -70,29 +90,31 @@
         </div>
       </div>
     </div>
+
     <div class="section">
-       <% @pets_a.each do |pet| %>
+       
       <div class="container">
         <div class="row">
+          <% @pets.each do |pet| %>
           <div class="col-md-3">
             <p><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></p>
 
             <h2 class="text-center"><%= pet.name %></h2>
             <p class="text-center">
               <br><%= pet.specie %>
-              <br><%= pet.age %>
               <br><%= pet.gender %>
               <br><%= pet.race %>
               <br><%= pet.size %>
-              <br><%= pet.sterilized %>
-              <br>U
+              <br><%= link_to 'Ver', pet %>
+              
+              
               
             </p>
           </div>
-         
+         <% end %>
         </div>
       </div>
-      <% end %>
+      
     </div>
 
 
@@ -163,9 +185,9 @@
         <td><%= pet.vaccine %></td>
         <td><%= pet.user.email %></td>
 
-        <td><%= link_to 'Show', pet %></td>
-        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Administrar', pet %></td>
+        <td><%= link_to 'Editar', edit_pet_path(pet) %></td>
+        <td><%= link_to 'Destruir', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -202,15 +224,15 @@
         <td><%= pet.race %></td>
         <td><%= pet.size %></td>
         <td><%= pet.sterilized %></td>
-  <td><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></td>
+        <td><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></td>
         <td><%= pet.user_id %></td>
         <td><%= pet.adoption %></td>
         <td><%= pet.vaccine %></td>
         <td><%= pet.user.email %></td>
 
-        <td><%= link_to 'Show', pet %></td>
-        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', pet %></td>
+        <td><%= link_to 'Editar', edit_pet_path(pet) %></td>
+        <td><%= link_to 'Dar de baja', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
