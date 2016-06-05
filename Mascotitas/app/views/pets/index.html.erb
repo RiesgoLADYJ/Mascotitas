@@ -61,19 +61,23 @@
 
 <div class="section">
   
-             <div class="container">
-        <div class="row">
+      <div class="container">
+        <div class="row text-center">
            <% @pets_a.each do |pet| %>
-          <div class="col-md-3">
-            <p class="text-center"><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></p>
-            <h2 class="text-center"><%= pet.name %></h2>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+            <p class="text-center"><%= image_tag(pet.avatar, :width => 200, class:'img-responsive img-thumbnail') if pet.avatar.present? %></p>
+            <h4 class="text-center"><%= pet.name %></h4>
             <p class="text-center">
-              <br><%= pet.specie %>
+              <%= pet.specie %>
               <br><%= pet.gender %>
               <br><%= pet.race %>
               <br><%= pet.size %>
-              <br><%= link_to 'Administrar', pet %>
+              <br>
+              <br>
+              <%= link_to('Administrar', pet, class:'btn btn-default' )%>
             </p>
+            </div>
           </div>
           <% end %>
         </div>
@@ -101,22 +105,26 @@
     <div class="section">
        
       <div class="container">
-        <div class="row">
+        <div class="row text-center">
           <% @pets.each do |pet| %>
-          <div class="col-md-3">
-            <p class="text-center"><%= image_tag(pet.avatar, :width => 200, class: 'img-responsive img-rounded') if pet.avatar.present? %></p>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+            <p class="text-center"><%= image_tag(pet.avatar, :width => 200, class: 'img-responsive img-thumbnail') if pet.avatar.present? %></p>
 
-            <h2 class="text-center"><%= pet.name %></h2>
+            <h4 class="text-center"><%= pet.name %></h4>
             <p class="text-center">
-              <br><%= pet.specie %>
+              <%= pet.specie %>
               <br><%= pet.gender %>
               <br><%= pet.race %>
               <br><%= pet.size %>
-              <br><%= link_to 'Ver', pet %>
+              <br>
+              <br>
+              <%= link_to('Ver', pet, class: 'btn btn-default')%>
               
               
               
             </p>
+            </div>
           </div>
          <% end %>
         </div>
