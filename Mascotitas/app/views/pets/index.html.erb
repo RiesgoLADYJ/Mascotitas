@@ -60,20 +60,35 @@
     </div>
 
 <div class="section">
-  <!--AQUI VA UN pets each doo...-->
-             <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <img src="https://ununsplash.imgix.net/photo-1421098518790-5a14be02b243?w=1024&amp;q=50&amp;fm=jpg&amp;s=24665881d66f79925810c2deb7e486b9" class="img-responsive img-rounded">
-            <h2 class="text-center">Floppy</h2>
-            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisici elit,
-              <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-              <br>Ut enim ad minim veniam, quis nostrud</p>
+  
+      <div class="container">
+        <div class="row text-center">
+           <% @pets_a.each do |pet| %>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+            <p class="text-center"><%= image_tag(pet.avatar, style:"width:200px;height:150px", class:'img-responsive img-thumbnail') if pet.avatar.present? %></p>
+            <h4 class="text-center"><%= pet.name %></h4>
+            <p class="text-center">
+              <%= pet.specie %>
+              <br><%= pet.gender %>
+              <br><%= pet.race %>
+              <br><%= pet.size %>
+              <br>
+              <br>
+              <%= link_to('Administrar', pet, class:'btn btn-default' )%>
+              <br>
+              <br>
+              <%= link_to('Editar', edit_pet_path(pet), class:'btn btn-success btn-xs' )%>
+              <%= link_to( 'Destruir', pet,class:'
+                btn btn-danger btn-xs', method: :delete, data: { confirm: '¿Estás seguro? :('}) %>
+
+            </p>
+            </div>
           </div>
-         
+          <% end %>
         </div>
       </div>
-       <!-- AQUI VA UN end-->
+       
     </div>
 
 
@@ -96,25 +111,35 @@
     <div class="section">
        
       <div class="container">
-        <div class="row">
+        <div class="row text-center">
           <% @pets.each do |pet| %>
-          <div class="col-md-3">
-            <p><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></p>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+            <p class="text-center"><%= image_tag(pet.avatar, style:"width:200px;height:150px", class:"img-responsive img-thumbnail") if pet.avatar.present? %></p>
 
-            <h2 class="text-center"><%= pet.name %></h2>
+            <h4 class="text-center"><%= pet.name %></h4>
             <p class="text-center">
-              <br><%= pet.specie %>
+              <%= pet.specie %>
               <br><%= pet.gender %>
               <br><%= pet.race %>
               <br><%= pet.size %>
-              <br><%= link_to 'Ver', pet %>
+              <br>
+              <br>
+              <%= link_to('Ver Perfil', pet, class: 'btn btn-default')%>
+              <br>
+              <br>
+              <%= link_to('Editar', edit_pet_path(pet), class:'btn btn-success btn-xs' )%>
+              <%= link_to( 'Destruir', pet,class:'
+                btn btn-danger btn-xs', method: :delete, data: { confirm: '¿Estás seguro? :('}) %>
               
               
               
             </p>
+            </div>
           </div>
          <% end %>
         </div>
+
       </div>
       
     </div>
@@ -128,7 +153,8 @@
             <button type="button" class="btn btn-block btn-lg btn-warning">Tus mascotas en adopción</button>
             <button type="button" class="btn btn-block btn-lg btn-warning">Tus mascotas adoptadas</button>
             -->
-           <%= link_to('Nueva mascota', new_pet_path, :class =>'btn btn-block btn-lg btn-warning' )%>
+
+           <%= link_to('Nueva mascota', new_pet_path, :class =>'btn btn-block btn-lg btn-warning')%>
           </div>
         </div>
       </div>
@@ -141,7 +167,6 @@
 
 
 
-    <%= link_to 'Nueva mascota', new_pet_path %>
 
 <p id="notice"><%= notice %></p>
 
@@ -149,102 +174,14 @@
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
 <p id="notice"><%= notice %></p>
 
-<h1>Mis mascotas</h1>
 
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Specie</th>
-      <th>Age</th>
-      <th>Gender</th>
-      <th>Race</th>
-      <th>Size</th>
-      <th>Sterilized</th>
-      <th>Avatar</th>
-      <th>User</th>
-      <th>Adoption</th>
-      <th>Vaccine</th>
-      <th>Duenño</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pets.each do |pet| %>
-      <tr>
-        <td><%= pet.name %></td>
-        <td><%= pet.specie %></td>
-        <td><%= pet.age %></td>
-        <td><%= pet.gender %></td>
-        <td><%= pet.race %></td>
-        <td><%= pet.size %></td>
-        <td><%= pet.sterilized %></td>
-  <td><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></td>
-        <td><%= pet.user_id %></td>
-        <td><%= pet.adoption %></td>
-        <td><%= pet.vaccine %></td>
-        <td><%= pet.user.email %></td>
-
-        <td><%= link_to 'Administrar', pet %></td>
-        <td><%= link_to 'Editar', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Destruir', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h1>Mis mascotas en adopción</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Specie</th>
-      <th>Age</th>
-      <th>Gender</th>
-      <th>Race</th>
-      <th>Size</th>
-      <th>Sterilized</th>
-      <th>Avatar</th>
-      <th>User</th>
-      <th>Adoption</th>
-      <th>Vaccine</th>
-      <th>Duenño</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pets_a.each do |pet| %>
-      <tr>
-        <td><%= pet.name %></td>
-        <td><%= pet.specie %></td>
-        <td><%= pet.age %></td>
-        <td><%= pet.gender %></td>
-        <td><%= pet.race %></td>
-        <td><%= pet.size %></td>
-        <td><%= pet.sterilized %></td>
-        <td><%= image_tag(pet.avatar, :width => 200) if pet.avatar.present? %></td>
-        <td><%= pet.user_id %></td>
-        <td><%= pet.adoption %></td>
-        <td><%= pet.vaccine %></td>
-        <td><%= pet.user.email %></td>
-
-        <td><%= link_to 'Ver', pet %></td>
-        <td><%= link_to 'Editar', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Dar de baja', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+ 
 
 <br>
 
 
 
-
+<!--  FOOTER  -->
 
  <div class="section section-warning">
       <div class="container">
@@ -259,7 +196,7 @@
               <i class="fa fa-5x fa-fw fa-instagram text-inverse"></i></a>
           </div>
           <div class="col-xs-3">
-            <a href="https://twitter.com/Pingendo">
+            <a href="https://twitter.com">
               <i class="fa fa-5x fa-fw fa-twitter text-inverse"></i></a>
           </div>
           <div class="col-xs-3">
@@ -279,25 +216,5 @@
 
 
 
-<!--SECCION DE MIS MASCOTAS EN ESTADO DE ADOPCION
 
- <div class="section">
-  <!AQUI VA UN pets each doo...
-             <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <img src="https://ununsplash.imgix.net/photo-1421098518790-5a14be02b243?w=1024&amp;q=50&amp;fm=jpg&amp;s=24665881d66f79925810c2deb7e486b9" class="img-responsive img-rounded">
-            <h2 class="text-center">Floppy</h2>
-            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisici elit,
-              <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-              <br>Ut enim ad minim veniam, quis nostrud</p>
-          </div>
-         
-        </div>
-      </div>
-      <!- AQUI VA UN end
-    </div>
-
-
--->
 
