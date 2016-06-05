@@ -8,10 +8,19 @@ class PetsController < ApplicationController
 
   end
 
+  def test
+    puts 'TESTTTTTT'
+    respond_to do |format|
+          puts 'TESTTTTTT'
+
+      format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   # GET /pets/1
   # GET /pets/1.json
   def show
-
     @requests = Request.where(pet_id: params[:id]).all
     users_id = Array.new(@requests.size) 
     @requests.each do |req|
@@ -38,11 +47,14 @@ class PetsController < ApplicationController
 
 
   def adopcion
+
     @pets = Pet.where.not(user_id:  current_user.id ).where(adoption: true).all
     @pets_m = Array.new(@pets.size) 
     @pets.each do |p|
       @pets_m.push([p.name,p.user.lat,p.user.lng,p.id])
     end
+
+
   end
 
   def acepta

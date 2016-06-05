@@ -12,19 +12,6 @@
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html><head></head><body>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +21,8 @@
     <link href="Untitled.css" rel="stylesheet" type="text/css">
     
     
-    
+        <%= form_tag test_path, method: :post do %>
+
       <div class="container">
         <div class="row">
           <div class="col-md-6">
@@ -66,6 +54,8 @@
             <h3>Busqueda por raza:</h3>
             <div class="col-sm-12">
               <input type="text" class="form-control" placeholder="Raza">
+                  <%= text_field_tag :race, class: 'form-control', placeholder: "Ingresa una Raza" %>
+
             </div>
           </div>
           <div class="col-md-6">
@@ -120,6 +110,13 @@
         </div>
       </div>
     </div>
+      <div class="actions">
+    <%= submit_tag "BUSCAR" %>
+  </div>
+
+<% end %>
+  
+
     <br>
     <br>
     <br>
@@ -160,26 +157,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p id="notice"><%= notice %></p>
 <h1>Listing Pets</h1>
 
 <table>
@@ -232,16 +209,11 @@
 <div id='map_canvas'></div>
 <script type="text/javascript">
 
-<<<<<<< HEAD
 function myFunction(identificador){
   window.location.href='http://localhost:3000/pets/'+identificador+"'";
 
 }
-=======
-// Function myFunction(identificador){
-//   window.location.href='http://localhost:3000/pets/'+identificador+"'";
-// }
->>>>>>> ea6cb8f70a5219fca4da585d5261c74e580a4cf4
+
 
 var map = new google.maps.Map(document.getElementById('map_canvas'), {
     zoom: 11,
