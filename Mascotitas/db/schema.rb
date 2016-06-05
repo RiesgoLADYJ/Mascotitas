@@ -23,10 +23,13 @@ ActiveRecord::Schema.define(version: 20160512170513) do
     t.boolean  "sterilized"
     t.string   "avatar"
     t.integer  "user_id"
+    t.boolean  "moquillo"
+    t.boolean  "rabia"
+    t.boolean  "parainfluenza"
     t.boolean  "adoption"
     t.integer  "vaccine_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "pets", ["user_id"], name: "index_pets_on_user_id"

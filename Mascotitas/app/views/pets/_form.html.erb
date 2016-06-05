@@ -113,16 +113,53 @@
         </div>
 
     </div>
+        <div class="col-md-6">
+      <br>
+        <!--Atributo Adoptado-->
+        <div class="field">
+          <%= f.label :rabia %>
+          <%= f.check_box :rabia %>
+        </div>
+
+    </div>
+        <div class="col-md-6">
+      <br>
+        <!--Atributo Adoptado-->
+        <div class="field">
+          <%= f.label :moquillo %>
+          <%= f.check_box :moquillo %>
+        </div>
+
+    </div>
+        <div class="col-md-6">
+      <br>
+        <!--Atributo Adoptado-->
+        <div class="field">
+          <%= f.label :parainfluenza %>
+          <%= f.check_box :parainfluenza %>
+        </div>
+
+    </div>
+        <div class="col-md-6">
+      <br>
+        <!--Atributo Adoptado-->
+        <div class="field">
+          <h4> Incluye una fotografía con un objeto para comparar el tamaño <h4/>
+      <%= f.file_field :avatar , accept:'image/*' , :required => true%>
+
+        </div>
+        <div class="actions btn btn-warning">
+          
+          <%= f.submit %>
+        </div>
+    </div>
   </div>
 </div>
 
 
 
-    <%= f.file_field :avatar , accept:'image/*' , :required => true%>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ 
 <% end %>
 
  <div class="section section-warning">

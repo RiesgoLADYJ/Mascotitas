@@ -10,6 +10,9 @@ class CreatePets < ActiveRecord::Migration
       t.boolean :sterilized
       t.string :avatar
       t.references :user, index: true, foreign_key: true
+      t.boolean :moquillo
+      t.boolean :rabia
+      t.boolean :parainfluenza
       t.boolean :adoption
       t.references :vaccine, index: true, foreign_key: true
 
