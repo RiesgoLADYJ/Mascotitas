@@ -66,7 +66,7 @@
            <% @pets_a.each do |pet| %>
           <div class="col-sm-4">
             <div class="thumbnail">
-            <p class="text-center"><%= image_tag(pet.avatar, :width => 200, class:'img-responsive img-thumbnail') if pet.avatar.present? %></p>
+            <p class="text-center"><%= image_tag(pet.avatar, style:"width:200px;height:150px", class:'img-responsive img-thumbnail') if pet.avatar.present? %></p>
             <h4 class="text-center"><%= pet.name %></h4>
             <p class="text-center">
               <%= pet.specie %>
@@ -76,6 +76,12 @@
               <br>
               <br>
               <%= link_to('Administrar', pet, class:'btn btn-default' )%>
+              <br>
+              <br>
+              <%= link_to('Editar', edit_pet_path(pet), class:'btn btn-success btn-xs' )%>
+              <%= link_to( 'Destruir', pet,class:'
+                btn btn-danger btn-xs', method: :delete, data: { confirm: '¿Estás seguro? :('}) %>
+
             </p>
             </div>
           </div>
@@ -109,7 +115,7 @@
           <% @pets.each do |pet| %>
           <div class="col-sm-4">
             <div class="thumbnail">
-            <p class="text-center"><%= image_tag(pet.avatar, :width => 200, class: 'img-responsive img-thumbnail') if pet.avatar.present? %></p>
+            <p class="text-center"><%= image_tag(pet.avatar, style:"width:200px;height:150px", class:"img-responsive img-thumbnail") if pet.avatar.present? %></p>
 
             <h4 class="text-center"><%= pet.name %></h4>
             <p class="text-center">
@@ -119,7 +125,12 @@
               <br><%= pet.size %>
               <br>
               <br>
-              <%= link_to('Ver', pet, class: 'btn btn-default')%>
+              <%= link_to('Ver Perfil', pet, class: 'btn btn-default')%>
+              <br>
+              <br>
+              <%= link_to('Editar', edit_pet_path(pet), class:'btn btn-success btn-xs' )%>
+              <%= link_to( 'Destruir', pet,class:'
+                btn btn-danger btn-xs', method: :delete, data: { confirm: '¿Estás seguro? :('}) %>
               
               
               
@@ -203,7 +214,7 @@
 
         <td><%= link_to 'Administrar', pet %></td>
         <td><%= link_to 'Editar', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Destruir', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destruir', pet, method: :delete, data: { confirm: '¿Estás seguro? :(' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -248,7 +259,7 @@
 
         <td><%= link_to 'Ver', pet %></td>
         <td><%= link_to 'Editar', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Dar de baja', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Dar de baja', pet, method: :delete, data: { confirm: '¿Estás seguro? :(' } %></td>
       </tr>
     <% end %>
   </tbody>
