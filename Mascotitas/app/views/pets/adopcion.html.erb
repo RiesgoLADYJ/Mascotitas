@@ -126,7 +126,7 @@
               <br><%= pet.size %>
               <br>
               <br>
-              <%= link_to('Administrar', pet, class:'btn btn-default' )%>
+              <%= link_to('Ver', pet, class:'btn btn-default' )%>
               <br>
               <br>
               <%= link_to('Editar', edit_pet_path(pet), class:'btn btn-success btn-xs' )%>
@@ -146,74 +146,70 @@
 </table>
 
 <%= javascript_tag do%>
- window.nearbys= <%=raw @pets.to_json %>;
-
-<%end%>
-<div id='map_canvas'></div>
-<script type="text/javascript">
-
-function myFunction(identificador){
-  window.location.href='http://localhost:3000/pets/'+identificador+"'";
-
-}
-
-
-var map = new google.maps.Map(document.getElementById('map_canvas'), {
-    zoom: 11,
-    center: new google.maps.LatLng(19.434,-99.133),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-});
-
-
-var markers=[];
-    var infoWindowContent=[];
-    var pets = <%=raw @pets_m.to_json%>;
-    $.each(nearbys, function(index) { 
-        
-        console.log( [pets[index][0]+ " " +pets[index][1]+" "+pets[index][2]+" "+pets[index][3]]);
-
-        console.log( [nearbys[index]['name']+ " " +nearbys[index]['user_id']+" "+nearbys[index]['user.lng']]);
-        markers.push([pets[index][0],pets[index][1],pets[index][2]]);
-       
-        infoWindowContent.push(['<div class="info_content" >' +'<button onclick="myFunction()">Perfil</button>'+
-        '<h3 style="color: rgb(<%= rand(0..200)%>,<%= rand(0..200)%> ,<%= rand(0..200)%>);">'+nearbys[index]['name']+'</h3>' +'</br>'+
-        '<p>'+nearbys[index]['name']+'</p>' +       
-         '</div>']);
-
-        });    
-
-       // Display multiple markers on a map
-       var infoWindow = new google.maps.InfoWindow(), marker, i;        
-      // Loop through our array of markers & place each one on the map  
-      for( i = 0; i < markers.length; i++ ) {
-          var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
-          marker = new google.maps.Marker({
-            position: position,
-            map: map,
-            title: markers[i][0]
-        });
-
-        // Allow each marker to have an info window    
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                infoWindow.setContent(infoWindowContent[i][0]);
-                infoWindow.open(map, marker);
-
-
-            }
-        })(marker, i));
-
-
-    
-    }
-
-    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(14);
-        google.maps.event.removeListener(boundsListener);
-    });
-
-</script>
+  window.nearbys= <%=raw @pets.to_json %>;
+ 
+ <%end%>
+ <div id='map_canvas'></div>
+ <script type="text/javascript">
+ 
+ function myFunction(identificador){
+ 
+ }
+ 
+ 
+ 
+ var map = new google.maps.Map(document.getElementById('map_canvas'), {
+     zoom: 11,
+     center: new google.maps.LatLng(19.434,-99.133),
+     mapTypeId: google.maps.MapTypeId.ROADMAP
+ });
+ var markers=[];
+     var infoWindowContent=[];
+     $.each(nearbys, function(index) { 
+         var pets = <%=raw @pets_m.to_json%>;
+         console.log( [pets[index][0]+ " " +pets[index][1]+" "+pets[index][2]+" "+pets[index][3]]);
+ 
+         console.log( [nearbys[index]['name']+ " " +nearbys[index]['user_id']+" "+nearbys[index]['user.lng']]);
+         markers.push([pets[index][0],pets[index][1],pets[index][2]]);
+         infoWindowContent.push(['<div class="info_content" >' +'<button onclick="myFunction()"> Click me</button>'+
+         '<h3 style="color: rgb(<%= rand(0..200)%>,<%= rand(0..200)%> ,<%= rand(0..200)%>);">'+nearbys[index]['name']+'</h3>' +'</br>'+
+         '<p>'+nearbys[index]['name']+'</p>' +       
+          '</div>']);
+ 
+         });   
+ 
+        // Display multiple markers on a map
+        var infoWindow = new google.maps.InfoWindow(), marker, i;        
+       // Loop through our array of markers & place each one on the map  
+       for( i = 0; i < markers.length; i++ ) {
+           var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+           marker = new google.maps.Marker({
+             position: position,
+             map: map,
+             title: markers[i][0]
+         });
+ 
+         // Allow each marker to have an info window    
+         google.maps.event.addListener(marker, 'click', (function(marker, i) {
+             return function() {
+                 infoWindow.setContent(infoWindowContent[i][0]);
+                 infoWindow.open(map, marker);
+ 
+ 
+             }
+         })(marker, i));
+ 
+ 
+     
+     }
+ 
+     // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+     var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+         this.setZoom(14);
+         google.maps.event.removeListener(boundsListener);
+     });
+  
+ </script>
 <br>
 
 
