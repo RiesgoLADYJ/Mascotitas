@@ -116,14 +116,28 @@
   </div>
 </div>
 
+ <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+  <p>
+    <%= f.file_field(:avatar ,class:'btn btn-default', accept:'image/*' , :required => true)%>
+  <br>
 
+   <%= f.submit(class:'btn btn-sm btn-success') %>
+   </p>
 
-    <%= f.file_field :avatar , accept:'image/*' , :required => true%>
+          </div>
+   
+  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
   </div>
-<% end %>
+   </div>
+   </div>
+</div>
+
+
+
 
  <div class="section section-warning">
       <div class="container">
@@ -138,7 +152,7 @@
               <i class="fa fa-5x fa-fw fa-instagram text-inverse"></i></a>
           </div>
           <div class="col-xs-3">
-            <a href="https://twitter.com/Pingendo">
+            <a href="https://twitter.com">
               <i class="fa fa-5x fa-fw fa-twitter text-inverse"></i></a>
           </div>
           <div class="col-xs-3">
