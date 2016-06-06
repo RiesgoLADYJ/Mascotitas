@@ -1,40 +1,63 @@
-
+<div class="col-md-6">
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @pet.name %>
 </p>
 
 <p>
-  <strong>Specie:</strong>
+  <strong>Especie:</strong>
   <%= @pet.specie %>
 </p>
 
 <p>
-  <strong>Age:</strong>
+  <strong>Edad:</strong>
   <%= @pet.age %>
 </p>
 
 <p>
-  <strong>Gender:</strong>
+  <strong>Genero:</strong>
   <%= @pet.gender %>
 </p>
 
 <p>
-  <strong>Race:</strong>
+  <strong>Raza:</strong>
   <%= @pet.race %>
 </p>
 
 <p>
-  <strong>Size:</strong>
+  <strong>Tamaño:</strong>
   <%= @pet.size %>
 </p>
 
 <p>
-  <strong>Sterilized:</strong>
+  <strong>Esterilizado:</strong>
   <%= @pet.sterilized %>
 </p>
 
+
+
+  
+
 <p>
+  <strong>Rabia:</strong>
+  <%= @pet.rabia %>
+</p>
+<p>
+  
+<p>
+  <strong>Parainfluenza:</strong>
+  <%= @pet.parainfluenza %>
+</p>
+<p>
+  
+
+<p>
+  <strong>Moquillo:</strong>
+  <%= @pet.moquillo %>
+</p>
+<p>
+
+
   <strong>Avatar:</strong>
   <%= image_tag(@pet.avatar, :width => 200) if @pet.avatar.present? %>
 </p>
@@ -68,14 +91,15 @@
   <%= submit_tag 'Adoptar' %>
 <% end %>
  <% else %>
-
+<div class="col-md-6">
 <h1 Quieren Adoptar/>
  <table>
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Correo</th>
-      
+      <th>Nombre Interesado </th>
+      <th>Correo Iteresado </th>
+            <th>Aceptar</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -94,8 +118,10 @@
     <% end %>
   </tbody>
 </table>
+</div>
  <% end %> 
 
 
-<%= link_to 'Edit', edit_pet_path(@pet) %> |
-<%= link_to 'Back', pets_path %>
+<%= link_to 'Editar', edit_pet_path(@pet) %> |
+<%= link_to 'Regresar', pets_path %>
+</div>

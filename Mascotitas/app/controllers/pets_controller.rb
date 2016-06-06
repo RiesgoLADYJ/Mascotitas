@@ -8,10 +8,20 @@ class PetsController < ApplicationController
 
   end
 
+  def test
+    puts 'TESTTTTTT'
+    respond_to do |format|
+          puts 'TESTTTTTT'
+    puts params[:race]
+
+      format.html { redirect_to adopcion_url, notice: 'COnsulta realizada' }
+      format.json { head :no_content }
+    end
+  end
+
   # GET /pets/1
   # GET /pets/1.json
   def show
-
     @requests = Request.where(pet_id: params[:id]).all
     users_id = Array.new(@requests.size) 
     @requests.each do |req|
@@ -28,27 +38,39 @@ class PetsController < ApplicationController
       request.pet_id = params[:id]
       request.publisher_id = @pet.user_id
       request.save
-      puts "se salvo el request"
-      puts @pet.to_json
-      puts request.to_json
-      format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }
+
+      format.html { redirect_to pets_url, notice: 'Has dado de baja a tu mascota' }
       format.json { head :no_content }
     end
   end
 
 
   def adopcion
-    @pets = Pet.where.not(user_id:  current_user.id ).where(adoption: true).all
+@ref = Pet.all
+puts @ref.size
+
+@pets = Pet.where("user_id != ? AND adoption = ? ", current_user.id, true)
+    #@pets = Pet.where.not(user_id:  current_user.id ).where(adoption: true).all
+    
+    #@pets = params[:race] ? @pets.where( race: params[:race]) : @pets
+    @pets = params[:race] ? @pets.where("race like ?", "%#{params[:race]}%" ) : @pets
+    @pets = params[:name] ? @pets.where("name like ?", "%#{params[:name]}%") : @pets
+    @pets = params[:specie] ? @pets.where(specie: params[:specie]) : @pets
+    @pets = params[:gender] ? @pets.where(gender: params[:gender]) : @pets
+    @pets = params[:size] ? @pets.where(size: params[:size]) : @pets
+  
+    @pets = params[:sterilized] ? @pets.where( sterilized: params[:sterilized]) : @pets
+
     @pets_m = Array.new(@pets.size) 
     @pets.each do |p|
       @pets_m.push([p.name,p.user.lat,p.user.lng,p.id])
     end
+
   end
 
   def acepta
       respond_to do |format|
         @request = Request.where(pet_id: params[:id]).first
-        puts 'SE ESTA HACIENDO LA ADOPCION'
         
         pet = Pet.where(id: @request.pet_id).first
         interested = User.where(id: @request.interented_id).first
@@ -62,7 +84,6 @@ class PetsController < ApplicationController
  
         @request.destroy
 
-        puts 'YA SE HIZO LA ADOPCION'
 
         format.html { redirect_to pets_url, notice: 'Diste una mascota en adopcion' }
         format.json { head :no_content }
@@ -86,7 +107,7 @@ class PetsController < ApplicationController
 
     respond_to do |format|
       if @pet.save
-        format.html { redirect_to @pet, notice: 'Pet was successfully created.' }
+        format.html { redirect_to @pet, notice: 'Has registrado a tu mascota' }
         format.json { render :show, status: :created, location: @pet }
       else
         format.html { render :new }
@@ -100,7 +121,7 @@ class PetsController < ApplicationController
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: 'Pet was successfully updated.' }
+        format.html { redirect_to @pet, notice: 'Has registrado a tu mascota' }
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
@@ -114,7 +135,7 @@ class PetsController < ApplicationController
   def destroy
     @pet.destroy
     respond_to do |format|
-      format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }
+      format.html { redirect_to pets_url, notice: 'Has dado de baja a tu mascota' }
       format.json { head :no_content }
     end
   end
@@ -127,7 +148,8 @@ class PetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params
-      params.require(:pet).permit(:name, :specie, :age, :gender, :race, :size, :sterilized, :avatar, :user_id, :adoption, :vaccine_id)
+      params.require(:pet).permit(:name, :specie, :age, :gender, :race, :size, :sterilized, :avatar, :user_id, 
+        :adoption, :moquillo, :rabia, :parainfluenza)
     end
 
 
