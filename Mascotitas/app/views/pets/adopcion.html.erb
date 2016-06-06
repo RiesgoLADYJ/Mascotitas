@@ -21,7 +21,7 @@
     <link href="Untitled.css" rel="stylesheet" type="text/css">
     
     
-        <%= form_tag test_path, method: :get do %>
+       <%= form_tag adopcion_path, method: :get do %>
 
 
       <div class="container">
@@ -29,20 +29,15 @@
           <div class="col-md-6">
             <h3>Busqueda por Nombre:</h3>
             <div class="col-sm-12">
-              <input type="text" class="form-control" placeholder="Nombre">
+  <%= text_field_tag :name, params[:name] %>
             </div>
           </div>
           <div class="col-md-6">
             <h3>Busqueda por especie:</h3>
             <div class="col-sm-12">
-              <select class="form-control">
-                <option>Perro</option>
-                <option>Gato</option>
-                <option>Reptil</option>
-                <option>Pez</option>
-                <option>Roedor</option>
-                <option>Ave</option>
-              </select>
+  
+              <%= select_tag :specie , "<option>Perro</option><option>Gato</option><option>Reptil</option><option>Pez</option><option>Roedor</option><option>Ave</option>".html_safe %>
+
             </div>
           </div>
         </div>
@@ -54,18 +49,14 @@
           <div class="col-md-6">
             <h3>Busqueda por raza:</h3>
             <div class="col-sm-12">
-              <input type="text" class="form-control" placeholder="Raza">
-  <%= text_field_tag :race, params[:race] %>
-
+              <%= text_field_tag :race, params[:race] %>
             </div>
           </div>
           <div class="col-md-6">
             <h3>Sexo:</h3>
             <div class="col-sm-12">
-              <select class="form-control">
-                <option>Macho</option>
-                <option>Hembra</option>
-              </select>
+
+             <%= select_tag :gender , "<option>Macho</option><option>Hembra</option>".html_safe %>
             </div>
           </div>
         </div>
@@ -77,21 +68,15 @@
           <div class="col-md-6">
             <h3>Talla:</h3>
             <div class="col-sm-12">
-              <select class="form-control">
-                <option>Muy pequeño</option>
-                <option>Pequeño</option>
-                <option>Mediano</option>
-                <option>Grande</option>
-                <option>Muy Grande</option>
-              </select>
+  
+             <%= select_tag :size , "<option>Muy Pequeño</option><option>Pequeño</option><option>Mediano</option><option>Grande</option><option>Muy Grande</option>".html_safe %>
             </div>
           </div>
           <div class="col-md-6">
             <br>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">ESTERILIZACIÓN</label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox2" value="option2">ADOPTADO</label>
+            <label class="checkbox-inline"></label>
+                             <%= check_box_tag :sterilized, params[:sterilized] %>ESTERILIZACIÓN</label>
+
           </div>
         </div>
       </div>
@@ -112,7 +97,6 @@
       </div>
     </div>
       <div class="actions">
-    <%= submit_tag "BUSCAR" %>
   </div>
 
 <% end %>

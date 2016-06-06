@@ -46,10 +46,21 @@ class PetsController < ApplicationController
 
 
   def adopcion
+@ref = Pet.all
+puts @ref.size
 
-puts params[:race]
-@pets = Pet.where("user_id != ? AND adoption = ? AND name like ?", current_user.id, true,params[:race])
+@pets = Pet.where("user_id != ? AND adoption = ? ", current_user.id, true)
     #@pets = Pet.where.not(user_id:  current_user.id ).where(adoption: true).all
+    
+    #@pets = params[:race] ? @pets.where( race: params[:race]) : @pets
+    @pets = params[:race] ? @pets.where("race like ?", "%#{params[:race]}%" ) : @pets
+    @pets = params[:name] ? @pets.where("name like ?", "%#{params[:name]}%") : @pets
+    @pets = params[:specie] ? @pets.where(specie: params[:specie]) : @pets
+    @pets = params[:gender] ? @pets.where(gender: params[:gender]) : @pets
+    @pets = params[:size] ? @pets.where(size: params[:size]) : @pets
+  
+    @pets = params[:sterilized] ? @pets.where( sterilized: params[:sterilized]) : @pets
+
     @pets_m = Array.new(@pets.size) 
     @pets.each do |p|
       @pets_m.push([p.name,p.user.lat,p.user.lng,p.id])
