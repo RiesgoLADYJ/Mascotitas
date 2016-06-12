@@ -31,7 +31,12 @@
 
 <p>
   <strong>Esterilizado:</strong>
-  <%= @pet.sterilized %>
+  
+  <% if @pet.sterilized? %> 
+    <%= image_tag   "/assets/palomita.png", size: "35x30"%>
+  <% else %>
+<%= image_tag   "/assets/tache.png", size: "35x30"%>
+<% end %>
 </p>
 
 
@@ -40,21 +45,30 @@
 
 <p>
   <strong>Rabia:</strong>
-  <%= @pet.rabia %>
-</p>
+  <% if @pet.rabia? %> 
+    <%= image_tag   "/assets/palomita.png", size: "35x30"%>
+  <% else %>
+<%= image_tag   "/assets/tache.png", size: "35x30"%>
+<% end %></p>
 <p>
   
 <p>
   <strong>Parainfluenza:</strong>
-  <%= @pet.parainfluenza %>
-</p>
+  <% if @pet.parainfluenza? %> 
+    <%= image_tag   "/assets/palomita.png", size: "35x30"%>
+  <% else %>
+<%= image_tag   "/assets/tache.png", size: "35x30"%>
+<% end %></p>
 <p>
   
 
 <p>
   <strong>Moquillo:</strong>
-  <%= @pet.moquillo %>
-</p>
+  <% if @pet.moquillo? %> 
+    <%= image_tag   "/assets/palomita.png", size: "35x30"%>
+  <% else %>
+<%= image_tag   "/assets/tache.png", size: "35x30"%>
+<% end %></p>
 <p>
 
 
@@ -69,13 +83,14 @@
 
 <p>
   <strong>Adoption:</strong>
-  <%= @pet.adoption %>
-</p>
+  <% if @pet.adoption? %> 
+    <%= image_tag   "/assets/palomita.png", size: "35x30"%>
+  <% else %>
+<%= image_tag   "/assets/tache.png", size: "35x30"%>
+<% end %></p>
 
 <p>
-  <strong>Vaccine:</strong>
-  <%= @pet.vaccine %>
-</p>
+
   <strong>Lat:</strong>
   <%= @pet.user.lat %>
 </p>

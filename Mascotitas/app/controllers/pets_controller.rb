@@ -39,6 +39,14 @@ class PetsController < ApplicationController
       request.publisher_id = @pet.user_id
       request.save
 
+
+
+  RestClient.post "https://api:key-7cf8b365bc68f77363f9f6c3b0c10f16"\
+  "@api.mailgun.net/v3/sandboxef86450b949b47ea8c0637234951d3a4.mailgun.org/messages",
+  :from => "Mailgun Sandbox <postmaster@sandboxef86450b949b47ea8c0637234951d3a4.mailgun.org>",
+  :to => @pet.user.email,
+  :subject => "Mascotitas en adopcion",
+  :text => "ALguien ha solicitado adoptar a una de tus mascotas, entra a tu perfil en MASCOTITAS."
       format.html { redirect_to pets_url, notice: 'Has dado de baja a tu mascota' }
       format.json { head :no_content }
     end

@@ -10,7 +10,7 @@ gem 'geokit-rails'
 gem 'gmaps4rails'
 
 gem 'bootstrap-generators'
-
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
